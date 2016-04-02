@@ -2,7 +2,7 @@
 *  Author: Connor Baker
 *  Version: 0.1a
 *  Created: March 30, 2016
-*  Last Updated: March 30, 2016
+*  Last Updated: April 1, 2016
 *
 *  Description: Book Assignment 10.13, from "Introduction to Java Programming:
 *  Brief Version, 10th Edition" by Y. Daniel Liang.
@@ -17,7 +17,7 @@
 *
 *  The data fields width and height with getter and setter methods.
 *
-*  A no-arg constructor that creates a defaul rectangle with (0,0) for (x,y) and
+*  A no-arg constructor that creates a default rectangle with (0,0) for (x,y) and
 *  1 for both width and height.
 *
 *  A constructor that creates a rectangle with the specified x, y , width, and
@@ -44,8 +44,17 @@
 *  property.
 *  Write methods setX, setY, setWidth, setHeight that set the appropriate
 *  property.
-*  The "overlaps" method is not required.  If you do it, you can ear up to 5
+*  The "overlaps" method is not required.  If you do it, you can earn up to 5
 *  points extra credit.
 */
 
 // Import necessary packages
+public class Assignment6 {
+
+  public static void main(String[] args) {
+    if (args.length == 0) {
+      System.out.println("Connor Baker");
+      MyRectangle2D noargRectangle = new MyRectangle2D(1.0, 1.0)
+    }
+  }
+}
