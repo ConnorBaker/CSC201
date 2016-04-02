@@ -1,11 +1,13 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.1a
+*  Version: 0.2a
 *  Created: March 30, 2016
-*  Last Updated: April 1, 2016
+*  Last Updated: April 2, 2016
 *
 *  Description: Book Assignment 10.13, from "Introduction to Java Programming:
 *  Brief Version, 10th Edition" by Y. Daniel Liang.
+*
+*  TODO: Fix contains(MyRectangle2D r) so that it actually works.
 */
 
 public class MyRectangle2D {
@@ -18,19 +20,19 @@ public class MyRectangle2D {
   double height = 0.0;
 
   // Create the rectangle object
-  Rectangle() {
+  MyRectangle2D() {
     // Empty
   }
 
   // Construct the rectangle object
-  Rectangle(double newWidth, newHeight) {
+  MyRectangle2D(double newWidth, double newHeight) {
     width = newWidth;
     height = newHeight;
   }
 
   // Set width
-  double setWidth() {
-
+  void setWidth(double newWidth) {
+    width = newWidth;
   }
 
   // Get width
@@ -39,8 +41,8 @@ public class MyRectangle2D {
   }
 
   // Set height
-  double setHeight() {
-
+  void setHeight(double newHeight) {
+    height = newHeight;
   }
 
   // Get height
@@ -49,8 +51,8 @@ public class MyRectangle2D {
   }
 
   // Set x-coordinate
-  double setX() {
-
+  void setX(double newX) {
+    x = newX;
   }
 
   // Get x-coordinate
@@ -59,8 +61,8 @@ public class MyRectangle2D {
   }
 
   // Set y-coordinate
-  double setY() {
-
+  void setY(double newY) {
+    y = newY;
   }
 
   // Get y-coordinate
@@ -68,7 +70,7 @@ public class MyRectangle2D {
     return y;
   }
 
-  // Get area of the rectanlge
+  // Get area of the rectangle
   double getArea() {
     return (width * height);
   }
@@ -78,4 +80,21 @@ public class MyRectangle2D {
     return ((2*width) + (2*height));
   }
 
+  // Check if a point is inside a rectangle
+  boolean contains(double x, double y) {
+    if ((x >= width) || (y >= height)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // Check if a rectangle is inside another rectangle
+  boolean contains(MyRectangle2D r) {
+    if ((x >= width) || (y >= height)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

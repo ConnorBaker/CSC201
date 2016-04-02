@@ -1,8 +1,8 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.1a
+*  Version: 0.2a
 *  Created: March 30, 2016
-*  Last Updated: April 1, 2016
+*  Last Updated: April 2, 2016
 *
 *  Description: Book Assignment 10.13, from "Introduction to Java Programming:
 *  Brief Version, 10th Edition" by Y. Daniel Liang.
@@ -49,12 +49,22 @@
 */
 
 // Import necessary packages
+
+
 public class Assignment6 {
 
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Connor Baker");
-      MyRectangle2D noargRectangle = new MyRectangle2D(1.0, 1.0)
+      MyRectangle2D noargRectangle = new MyRectangle2D(1.0, 1.0);
+      System.out.println("noargRectangle is "+noargRectangle.getWidth()+" by " +noargRectangle.getHeight());
+      noargRectangle.setHeight(5.0);
+      noargRectangle.setWidth(3.0);
+      System.out.println("noargRectangle is "+noargRectangle.getWidth()+" by " +noargRectangle.getHeight());
+      boolean inside = noargRectangle.contains(5.0, 5.0);
+      System.out.println("The point (5.0, 5.0) is inside the rectangle: "+inside);
+    } else {
+
     }
   }
 }
