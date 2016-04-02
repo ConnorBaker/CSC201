@@ -1,6 +1,6 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.2a
+*  Version: 0.3a
 *  Created: March 30, 2016
 *  Last Updated: April 2, 2016
 *
@@ -46,25 +46,26 @@
 *  property.
 *  The "overlaps" method is not required.  If you do it, you can earn up to 5
 *  points extra credit.
+*
+*  TODO: Handle negative inputs correctly.
 */
-
-// Import necessary packages
-
 
 public class Assignment6 {
 
   public static void main(String[] args) {
     if (args.length == 0) {
       System.out.println("Connor Baker");
-      MyRectangle2D noargRectangle = new MyRectangle2D(1.0, 1.0);
-      System.out.println("noargRectangle is "+noargRectangle.getWidth()+" by " +noargRectangle.getHeight());
-      noargRectangle.setHeight(5.0);
-      noargRectangle.setWidth(3.0);
-      System.out.println("noargRectangle is "+noargRectangle.getWidth()+" by " +noargRectangle.getHeight());
-      boolean inside = noargRectangle.contains(5.0, 5.0);
-      System.out.println("The point (5.0, 5.0) is inside the rectangle: "+inside);
+      MyRectangle2D noargRectangle = new MyRectangle2D();
+    } else if (args.length == 4) {
+      MyRectangle2D argRectangle = new MyRectangle2D(Double.parseDouble(args[0]),
+                    Double.parseDouble(args[1]),
+                    Double.parseDouble(args[2]),
+                    Double.parseDouble(args[3]));
     } else {
-
+      System.out.println("Incorrect number of arguments.");
+      System.out.println("Accepted arguments are x y width height");
+      System.out.println("Example:");
+      System.out.println("java Assignment6 1.0 2.0 3.0 4.0");
     }
   }
 }

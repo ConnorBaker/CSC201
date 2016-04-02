@@ -1,13 +1,15 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.2a
+*  Version: 0.3a
 *  Created: March 30, 2016
 *  Last Updated: April 2, 2016
 *
 *  Description: Book Assignment 10.13, from "Introduction to Java Programming:
 *  Brief Version, 10th Edition" by Y. Daniel Liang.
 *
-*  TODO: Fix contains(MyRectangle2D r) so that it actually works.
+*  TODO: Fix contains(MyRectangle2D r) so that it works.
+*
+*  TODO: Fix contains(double newX, double newY) so that it works.
 */
 
 public class MyRectangle2D {
@@ -19,13 +21,24 @@ public class MyRectangle2D {
   double width = 0.0;
   double height = 0.0;
 
-  // Create the rectangle object
+  // Initialize the bounds
+  double lbx = 0.0; // Lower bound of x
+  double ubx = 0.0; // Upper bound of x
+  double lby = 0.0; // Lower bound of y
+  double uby = 0.0; // Upper bound of y
+
+  // Default constructor of the rectangle object
   MyRectangle2D() {
-    // Empty
+    x = 0.0;
+    y = 0.0;
+    width = 1.0;
+    height = 1.0;
   }
 
   // Construct the rectangle object
-  MyRectangle2D(double newWidth, double newHeight) {
+  MyRectangle2D(double newX, double newY, double newWidth, double newHeight) {
+    x = newX;
+    y = newY;
     width = newWidth;
     height = newHeight;
   }
@@ -81,11 +94,19 @@ public class MyRectangle2D {
   }
 
   // Check if a point is inside a rectangle
-  boolean contains(double x, double y) {
-    if ((x >= width) || (y >= height)) {
-      return false;
-    } else {
+  boolean contains(double newX, double newY) {
+    lbx = (0.5 * width) - x;
+    ubx = (0.5 * width) + x;
+    lby = (0.5 * height) - y;
+    uby = (0.5 * height) + y;
+    System.out.println(lbx);
+    System.out.println(ubx);
+    System.out.println(lby);
+    System.out.println(uby);
+    if (((newX >= lbx) && (newX <= ubx)) && ((newY >= lby) && (newY <= uby))) {
       return true;
+    } else {
+      return false;
     }
   }
 
