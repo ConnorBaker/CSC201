@@ -1,6 +1,6 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.3a
+*  Version: 0.4a
 *  Created: March 30, 2016
 *  Last Updated: April 2, 2016
 *
@@ -47,7 +47,7 @@
 *  The "overlaps" method is not required.  If you do it, you can earn up to 5
 *  points extra credit.
 *
-*  TODO: Handle negative inputs correctly.
+*  TODO: Check for negative lengths.
 */
 
 public class Assignment6 {
