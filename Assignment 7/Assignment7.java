@@ -1,12 +1,12 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.4a
+*  Version: 0.5a
 *  Created: April 15, 2016
 *  Last Updated: April 15, 2016
 *
 *  Description: A program that randomly fills in 0s and 1s into an n-by-n
 *  matrix, prints the matrix, and finds rows and columns with the most 1s, using
-*  ArrayLists to store the row and column indicies with the most 1s.
+*  two ArrayLists to store the row and column indicies with the most 1s.
 *
 *  TODO: Compare the values present in the array and find the one with the most
 *  1s in it, via ArrayLists.
@@ -16,6 +16,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Assignment7 {
 
