@@ -1,6 +1,6 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.7a
+*  Version: 0.8a
 *  Created: April 15, 2016
 *  Last Updated: April 16, 2016
 *
@@ -8,8 +8,9 @@
 *  matrix, prints the matrix, and finds rows and columns with the most 1s, using
 *  two ArrayLists to store the row and column indicies with the most 1s.
 *
-*  TODO: Handle columns/rows of equal value. Currently, it prints the largest
-*  and most recent column/row.
+*  TODO: Better comments.
+*
+*  TODO: Make new classes/methods to move some of this code out of main.
 */
 
 // Import necessary packages
@@ -79,20 +80,27 @@ public class Assignment7 {
      *  At the end of each column/row we check for sum1 larger than sum2, which
      *  would mean that the row just tallied has more 1s than the previous. If
      *  this is the case, we assign the current row to sum2, and iterate again.
+     *
+     *  We use an ArrayList to keep track of the largest rows/columns.
      */
 
     // Initialize the variables that hold sums of rows
     int sum1 = 0;
     int sum2 = 0;
     int currentRowIndex = 0;
-    int largestRowIndex = 0;
+    ArrayList<Integer> rowList = new ArrayList<>();
 
     for (int i = 1; i < ((n * n) + 1); i++) {
       if ((i % n) == 0) {
         sum1 += row.get(i-1);
-        if (sum1 > sum2) {
-          sum2 = sum1;
-          largestRowIndex = currentRowIndex;
+        if (sum1 >= sum2) {
+          if (sum1 == sum2) {
+            rowList.add(currentRowIndex);
+          } else {
+            sum2 = sum1;
+            rowList.clear();
+            rowList.add(currentRowIndex);
+          }
         }
         currentRowIndex++;
         sum1 = 0;
@@ -105,14 +113,19 @@ public class Assignment7 {
     sum1 = 0;
     sum2 = 0;
     int currentColumnIndex = 0;
-    int largestColumnIndex = 0;
+    ArrayList<Integer> columnList = new ArrayList<>();
 
     for (int i = 1; i < ((n * n) + 1); i++) {
       if ((i % n) == 0) {
         sum1 += column.get(i-1);
-        if (sum1 > sum2) {
-          sum2 = sum1;
-          largestColumnIndex = currentColumnIndex;
+        if (sum1 >= sum2) {
+          if (sum1 == sum2) {
+            columnList.add(currentColumnIndex);
+          } else {
+            sum2 = sum1;
+            columnList.clear();
+            columnList.add(currentColumnIndex);
+          }
         }
         currentColumnIndex++;
         sum1 = 0;
@@ -122,8 +135,8 @@ public class Assignment7 {
     }
 
     // Print the information gathered from the array
-    System.out.println("The largest row index: " + largestRowIndex);
-    System.out.println("The largest column index: " + largestColumnIndex);
+    System.out.println("The largest row(s) index: " + rowList);
+    System.out.println("The largest column(s) index: " + columnList);
   }
 
   public static int randomNumber() {
