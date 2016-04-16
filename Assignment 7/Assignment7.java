@@ -1,6 +1,6 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.6a
+*  Version: 0.7a
 *  Created: April 15, 2016
 *  Last Updated: April 16, 2016
 *
@@ -8,10 +8,8 @@
 *  matrix, prints the matrix, and finds rows and columns with the most 1s, using
 *  two ArrayLists to store the row and column indicies with the most 1s.
 *
-*  TODO: Compare the values present in the array and find the one with the most
-*  1s in it, via ArrayLists.
-*
-*  TODO: Fix how the array is printed.
+*  TODO: Handle columns/rows of equal value. Currently, it prints the largest
+*  and most recent column/row.
 */
 
 // Import necessary packages
@@ -47,15 +45,12 @@ public class Assignment7 {
     }
 
     // Print the array
-    System.out.println("The random array is: ");
-    System.out.println(Arrays.deepToString(array));
-
-    // Create the column ArrayList
-    ArrayList<Integer> column = new ArrayList<>();
+    System.out.println("The randomly filled array of size " + n + " is: ");
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
-        column.add(array[j][i]);
+        System.out.print(array[i][j] + " ");
       }
+      System.out.println();
     }
 
     // Create the row ArrayList
@@ -63,6 +58,14 @@ public class Assignment7 {
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
         row.add(array[i][j]);
+      }
+    }
+
+    // Create the column ArrayList
+    ArrayList<Integer> column = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        column.add(array[j][i]);
       }
     }
 
@@ -78,27 +81,10 @@ public class Assignment7 {
      *  this is the case, we assign the current row to sum2, and iterate again.
      */
 
-    // Initialize the variables that hold sums of columns
+    // Initialize the variables that hold sums of rows
     int sum1 = 0;
     int sum2 = 0;
-    int largestColumnIndex = 0;
-
-    for (int i = 1; i < ((n * n) + 1); i++) {
-      if ((i % n) == 0) {
-        sum1 += column.get(i-1);
-        if (sum1 > sum2) {
-          sum2 = sum1;
-          largestColumnIndex = 0; // Implement logic
-        }
-        sum1 = 0;
-      } else {
-        sum1 += column.get(i-1);
-      }
-    }
-
-    // Recycle the variables that hold sums of rows
-    sum1 = 0;
-    sum2 = 0;
+    int currentRowIndex = 0;
     int largestRowIndex = 0;
 
     for (int i = 1; i < ((n * n) + 1); i++) {
@@ -106,17 +92,38 @@ public class Assignment7 {
         sum1 += row.get(i-1);
         if (sum1 > sum2) {
           sum2 = sum1;
-          largestRowIndex = 0; // Implement logic
+          largestRowIndex = currentRowIndex;
         }
+        currentRowIndex++;
         sum1 = 0;
       } else {
         sum1 += row.get(i-1);
       }
     }
 
+    // Recycle the variables that hold sums of columns
+    sum1 = 0;
+    sum2 = 0;
+    int currentColumnIndex = 0;
+    int largestColumnIndex = 0;
+
+    for (int i = 1; i < ((n * n) + 1); i++) {
+      if ((i % n) == 0) {
+        sum1 += column.get(i-1);
+        if (sum1 > sum2) {
+          sum2 = sum1;
+          largestColumnIndex = currentColumnIndex;
+        }
+        currentColumnIndex++;
+        sum1 = 0;
+      } else {
+        sum1 += column.get(i-1);
+      }
+    }
+
     // Print the information gathered from the array
-    System.out.println("The largest row index: ");
-    System.out.println("The largest column index: ");
+    System.out.println("The largest row index: " + largestRowIndex);
+    System.out.println("The largest column index: " + largestColumnIndex);
   }
 
   public static int randomNumber() {
