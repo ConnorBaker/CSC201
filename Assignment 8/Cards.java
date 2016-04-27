@@ -1,19 +1,17 @@
 /*
 *  Author: Connor Baker
-*  Version: 0.1a
+*  Version: 0.2a
 *  Created: April 23, 2016
-*  Last Updated: April 23, 2016
+*  Last Updated: April 27, 2016
 *
 *  Description: Create an array that holds the number of cards in a deck (52).
 *  Provides a method that shuffles the deck.
-*
-*  TODO: Implement ShuffleDeck. 
 */
 
 // Import util packages
-import java.util.Scanner;
 import java.util.Arrays;
-
+import java.util.Random;
+import java.util.Scanner;
 
 public class Cards {
 
@@ -29,13 +27,21 @@ public class Cards {
                         52};
 
     System.out.println(Arrays.toString(deckofcards));
-
+    int[] processed = ShuffleDeck(deckofcards);
+    System.out.println(Arrays.toString(processed));
   }
 
-  public int[] ShuffleDeck(int[] temp) {
-    for (i = 0; i < temp.length; i++) {
-      int index = 0;
-      return temp[];
+  public static int[] ShuffleDeck(int[] temporaryDeck) {
+    Random randomNumber = new Random();
+    int index = 0;
+    int temporaryNumber = 0;
+    int thatHawtness = 0;
+    for (int i = 0; i < temporaryDeck.length; i++) {
+      index = randomNumber.nextInt(52);
+      temporaryNumber = temporaryDeck[i];
+      temporaryDeck[i] = temporaryDeck[index];
+      temporaryDeck[index] = temporaryNumber;
     }
+    return temporaryDeck;
   }
 }
